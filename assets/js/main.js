@@ -19,22 +19,29 @@ mainNav.querySelectorAll('a').forEach(link => {
 });
 
 const form = document.getElementById('inquiryForm');
-form.addEventListener('submit', (e) => {
+const formStatus = document.getElementById('formStatus');
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const organization = form.organization.value.trim();
-  const engagement = form.engagement.value;
-  const message = form.message.value.trim();
+  formStatus.textContent = 'Sending...';
+  formStatus.className = 'form-status';
 
-  const subject = `Crisium Group Inquiry: ${engagement}`;
-  const body =
-    `Name: ${name}\n` +
-    `Email: ${email}\n` +
-    `Organization: ${organization || 'N/A'}\n` +
-    `Engagement type: ${engagement}\n\n` +
-    `${message}`;
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
 
-  window.location.href =
-    `mailto:ruby@crisiumgroup.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (response.ok) {
+      form.reset();
+      formStatus.textContent = "Thank you — your message is on its way. We'll be in touch.";
+      formStatus.classList.add('success');
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (err) {
+    formStatus.textContent = 'Something went wrong. Please email ruby@crisiumgroup.com directly.';
+    formStatus.classList.add('error');
+  }
 });

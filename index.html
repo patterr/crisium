@@ -32,6 +32,9 @@
 
   <section class="hero" id="hero">
     <div class="hero-glow" aria-hidden="true"></div>
+    <span class="shooting-star" aria-hidden="true"></span>
+    <span class="shooting-star star-2" aria-hidden="true"></span>
+    <p class="hero-coords" aria-hidden="true">17.0&deg;N 59.1&deg;E &mdash; MARE CRISIUM</p>
     <div class="wrap hero-inner">
       <p class="eyebrow">Crisium Group</p>
       <h1>Independent insight for the <em>space economy.</em></h1>
@@ -50,18 +53,42 @@
       <p class="eyebrow">What We Do</p>
       <div class="card-grid">
         <article class="card">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="12" cy="12" r="3.2"/>
+            <line x1="12" y1="1" x2="12" y2="4"/>
+            <line x1="12" y1="20" x2="12" y2="23"/>
+            <line x1="1" y1="12" x2="4" y2="12"/>
+            <line x1="20" y1="12" x2="23" y2="12"/>
+          </svg>
           <h3>Technical diligence</h3>
           <p>Independent assessment of scientific credibility, technical maturity, development risk, and mission architecture for investors considering space and deep-tech opportunities.</p>
         </article>
         <article class="card">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+            <path d="M8.5 15.5a5 5 0 0 1 0 -7"/>
+            <path d="M15.5 15.5a5 5 0 0 0 0 -7"/>
+            <path d="M5.5 18.5a9 9 0 0 1 0 -13"/>
+            <path d="M18.5 18.5a9 9 0 0 0 0 -13"/>
+          </svg>
           <h3>Investor intelligence</h3>
           <p>Private briefings, sector education, market mapping, and expert interpretation for investors who want to understand what is real, what is premature, and what questions have not yet been answered.</p>
         </article>
         <article class="card">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+            <circle cx="20.5" cy="9" r="1.8" fill="currentColor" stroke="none"/>
+          </svg>
           <h3>Strategic advisory</h3>
           <p>Positioning, market strategy, partnerships, and trusted introductions for select companies operating in lunar exploration, space resources, planetary science, and emerging space infrastructure.</p>
         </article>
         <article class="card">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1 -2.1M16.3 7.7l2.1 -2.1"/>
+            <circle cx="12" cy="12" r="3.4"/>
+          </svg>
           <h3>Narrative and industry influence</h3>
           <p>Executive thought leadership, technical storytelling, and strategic communications for companies whose work is important — but difficult to explain.</p>
         </article>
@@ -86,7 +113,9 @@
 
   <section class="section" id="founder">
     <div class="wrap founder-grid">
-      <div class="avatar" aria-hidden="true">RP</div>
+      <div class="avatar">
+        <img src="assets/img/founder.jpg" alt="Dr. Ruby Patterson" width="640" height="640" loading="lazy">
+      </div>
       <div class="founder-copy">
         <p class="eyebrow">Founder</p>
         <h2>Dr. Ruby Patterson</h2>
@@ -102,9 +131,14 @@
       <p class="eyebrow">Work with Crisium</p>
       <h2>Crisium accepts a limited number of advisory and diligence engagements.</h2>
       <p class="contact-lede">For investor briefings, technical diligence, strategic advisory, speaking, or selected partnerships:</p>
-      <a href="mailto:ruby@crisiumgroup.com" class="btn btn-primary btn-lg">ruby@crisiumgroup.com</a>
+      <div class="email-cta-wrap">
+        <a href="mailto:ruby@crisiumgroup.com" class="btn btn-primary btn-lg">ruby@crisiumgroup.com</a>
+        <p class="email-note">Transmission time: instantaneous. We checked.</p>
+      </div>
 
-      <form class="inquiry-form" id="inquiryForm">
+      <form class="inquiry-form" id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="New inquiry from Crisium Group website">
         <div class="form-row">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -134,7 +168,7 @@
         </div>
         <div class="form-row form-row-full">
           <button type="submit" class="btn btn-primary">Send Inquiry</button>
-          <p class="form-note">This opens your email client with your message pre-filled, addressed to Crisium Group.</p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </div>
       </form>
 
