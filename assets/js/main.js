@@ -41,7 +41,7 @@ form.addEventListener('submit', async (e) => {
       throw new Error('Form submission failed');
     }
   } catch (err) {
-    formStatus.textContent = 'Something went wrong. Please email ruby@crisiumgroup.com directly.';
+    formStatus.textContent = 'Something went wrong. Please email connect@crisiumgroup.com directly.';
     formStatus.classList.add('error');
   }
 });
