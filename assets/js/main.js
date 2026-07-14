@@ -37,9 +37,13 @@ form.addEventListener('submit', async (e) => {
       form.reset();
       formStatus.textContent = "Thank you — your message is on its way. We'll be in touch.";
       formStatus.classList.add('success');
-    } else {
-      throw new Error('Form submission failed');
+      return;
     }
+
+    const data = await response.json().catch(() => null);
+    const detail = data?.errors?.map((e) => e.message).join(' ');
+    formStatus.textContent = detail || 'Something went wrong. Please email connect@crisiumgroup.com directly.';
+    formStatus.classList.add('error');
   } catch (err) {
     formStatus.textContent = 'Something went wrong. Please email connect@crisiumgroup.com directly.';
     formStatus.classList.add('error');
